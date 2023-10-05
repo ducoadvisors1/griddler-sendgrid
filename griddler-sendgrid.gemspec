@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'pry'
 
   spec.add_dependency 'griddler', '>= 1.5.2'
   spec.add_dependency 'mail', '>= 2.7.0'
