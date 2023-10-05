@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'pry'
 
   spec.add_dependency 'griddler', '>= 1.5.2'
