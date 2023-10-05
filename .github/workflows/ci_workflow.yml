@@ -14,4 +14,4 @@ jobs:
     - name: Setup environments
       run: docker-compose build app
     - name: Run tests
-      run: docker-compose run app bash -c "bin/rspec spec/"
+      run: docker-compose run app bash -c "bundle install && bin/rspec spec/"
