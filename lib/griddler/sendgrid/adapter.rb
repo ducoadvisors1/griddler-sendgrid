@@ -11,12 +11,16 @@ module Griddler
       end
 
       def normalize_params
+        # https://docs.sendgrid.com/for-developers/parsing-email/setting-up-the-inbound-parse-webhook
+
         params.merge(
           to: recipients(:to).map(&:format),
           cc: recipients(:cc).map(&:format),
           bcc: get_bcc,
           attachments: attachment_files,
           charsets: charsets,
+          text: text_body,
+          html: html_body,
           spam_report: {
             report: params[:spam_report],
             score: params[:spam_score],
@@ -28,6 +32,22 @@ module Griddler
       private
 
       attr_reader :params
+
+      def text_body
+        return if params[:text].nil?
+
+        force_to_utf_8_string(params[:text])
+      end
+
+      def html_body
+        return if params[:html].nil?
+
+        force_to_utf_8_string(params[:html])
+      end
+
+      def force_to_utf_8_string(text)
+        text.to_s.encode(Encoding.find('UTF-8'), invalid: :replace, undef: :replace, replace: '')
+      end
 
       def recipients(key)
         Mail::AddressList.new(params[key] || '').addresses
