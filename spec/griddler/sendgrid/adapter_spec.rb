@@ -139,6 +139,18 @@ describe Griddler::Sendgrid::Adapter, '.normalize_params' do
     charsets[:to].should eq 'UTF-8'
   end
 
+  it 'forces utf 8 encoding on text and doesnt blow up' do
+    normalized_params = normalize_params(default_params.merge(text: "hi \xC2 there"))
+
+    expect(normalized_params[:text]).to eq "hi  there"
+  end
+
+  it 'forces utf 8 encoding on html and doesnt blow up' do
+    normalized_params = normalize_params(default_params.merge(html: "<b>hi \xC2 there<\b>"))
+
+    expect(normalized_params[:html]).to eq "<b>hi  there<\b>"
+  end
+
   it 'does not explode if charsets is not JSON-able' do
     params = default_params.merge(charsets: 'This is not JSON')
 

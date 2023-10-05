@@ -1,5 +1,9 @@
 ## HEAD (unreleased)
 
+## 1.2.1
+- Added Dockerfile for development
+- Force UTF-8 encoding on text/html parts
+
 ## 1.2.0
 
 - Rescue `Mail::AddressList` parse errors ([#34](https://github.com/thoughtbot/griddler-sendgrid/pull/34))
