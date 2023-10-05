@@ -12,6 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Setup environments
-      run: docker-compose build app && docker-compose run app bash -c "bin/rspec spec/"
+      run: docker-compose build app
     - name: Run tests
       run: docker-compose run app bash -c "bin/rspec spec/"

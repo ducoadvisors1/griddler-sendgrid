@@ -1,0 +1,9 @@
+*
+!Gemfile
+!Gemfile.lock
+!griddler-sendgrid.gemspec
+!Rakefile
+!app
+!bin
+!lib
+!spec
