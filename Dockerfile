@@ -24,7 +24,10 @@ COPY --chown=dev ./ /project/
 
 RUN gem install bundler
 RUN bundle install
+RUN bundle binstubs --all
 RUN bundle update --bundler
+
+RUN echo "export PATH=$PATH:/project/bin" >> ~/.bashrc
 
 COPY --chown=dev . /project/
 
