@@ -1,0 +1,17 @@
+name: Pull request CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup environments
+      run: docker-compose build app
+    - name: Run tests
+      run: docker-compose run app bash -c "bin/rspec spec/"
